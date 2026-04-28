@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Plantilla para estandarizar recursos de la plataforma.
+
+Resources:
+  # Almacenamiento para archivos estáticos o logs
+  AppStorageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: netflix-internal-service-data
+
+  # Servidor de aplicación estandarizado
+  AppServerInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0 # Amazon Linux 2 (Ejemplo)
+      Tags:
+        - Key: Name
+          Value: StandardAppServer
